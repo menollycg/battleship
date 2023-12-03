@@ -11,6 +11,7 @@ BG = pygame.transform.scale(pygame.image.load("./images/background3.jpg"), (WIDT
 
 def draw():
     WIN.blit(BG, (0, 0))
+    pygame.display.update()
 
 
 def main():
