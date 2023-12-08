@@ -1,12 +1,15 @@
 import pygame
 import time
 import random
+from pathlib import Path
 
 WIDTH, HEIGHT = 1000, 800
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Battleship")
 
-BG = pygame.transform.scale(pygame.image.load("./images/background3.jpg"), (WIDTH, HEIGHT))
+this_file = Path(__file__).resolve()
+bg_path = this_file.parent / "images/background3.jpg"
+BG = pygame.transform.scale(pygame.image.load(bg_path), (WIDTH, HEIGHT))
 
 
 def draw():
