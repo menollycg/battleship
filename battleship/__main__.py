@@ -13,6 +13,10 @@ BG = pygame.transform.scale(pygame.image.load(bg_path), (WIDTH, HEIGHT))
 
 
 def draw():
+    """
+    Draws the game screen where the game board is.
+    :return: N/A
+    """
     WIN.blit(BG, (0, 0))
     pygame.display.update()
 
