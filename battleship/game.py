@@ -2,6 +2,7 @@
 
 """
 from .player import Player
+from itertools import permutations
 import numpy as np
 
 
@@ -21,11 +22,8 @@ class Game:
 
     def update(self):
         print("update game")
-        for player in self.players:
-            result = player.attack()
-            # still thinking of what to do with result
-            if self.gameover(result):
-                raise Exception(player)
+        for player, opponent in permutations(self.players, 2):
+            result = player.attack(opponent)
 
     def run(self):
         """
@@ -35,12 +33,10 @@ class Game:
         print("run game")
         self.setup()
         while True:
-            try:
-                self.update()
-                print("after update")
-                self.draw()
-            except Exception as error:
-                print("Game Over")
+            self.update()
+            print("after update")
+            self.draw()
+            if self.gameover():
                 break
 
     def draw(self):
@@ -49,11 +45,14 @@ class Game:
         """
         print("draw game")
 
-    def gameover(self, result):
+    def gameover(self):
         """
         Checks to see if conditions for game to be over are met.
         All ships have to be sunk by one player
-        :param result:
         :return: boolean
         """
-        return True
+        for player in self.players:
+            if player.ships_sunk:
+                print(f"{player.name} lost! Game Over")
+                return True
+        return False

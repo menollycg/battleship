@@ -2,7 +2,6 @@
 
 """
 import numpy as np
-from string import ascii_uppercase
 
 
 class Board:
@@ -13,3 +12,11 @@ class Board:
 
     def __str__(self):
         return str(self.grid)
+
+    def add(self, ship, location, orientation):
+        print(ship.name, location, orientation)
+        self.check_location(location, orientation)
+        # Put ship on board
+
+    def check_location(self, location, orientation):
+        pass
