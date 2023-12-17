@@ -2,6 +2,7 @@
 
 """
 from .player import Player
+import numpy as np
 
 
 class Game:
@@ -10,7 +11,6 @@ class Game:
         """
         2 players
         set of ships
-        board
         """
         self.players = [Player("Player 1"), Player("Player 2")]
 
@@ -37,6 +37,7 @@ class Game:
         while True:
             try:
                 self.update()
+                print("after update")
                 self.draw()
             except Exception as error:
                 print("Game Over")
@@ -50,6 +51,8 @@ class Game:
 
     def gameover(self, result):
         """
+        Checks to see if conditions for game to be over are met.
+        All ships have to be sunk by one player
         :param result:
         :return: boolean
         """
