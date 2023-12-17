@@ -1,7 +1,8 @@
 """
 
 """
-from .game import Game
+from battleship.game import Game
+import numpy as np
 
 
 def main():
